@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <Nav>
+        <div class="nevbar">
+            <h1>คอร์ดเพลง</h1>
+        </div>
+    </Nav>
+
+    <main>
+        <div *ngIf="isDesktop" class="song-detail-box">
+            <div class="detail-box">
+                <img style="width: 100px; height: 100px" src="{{ songImg }}" alt="{{ songName }}" />
+                <p>เพลง : {{ songName }}</p>
+                <p>ศิลปิน : {{ songArtist }}</p>
+            </div>
+
+            <div class="youtube-box">
+                <!-- <iframe [src]="safeURL" frameborder="0" allowfullscreen></iframe> -->
+                <iframe width="400" height="200" [src]="songUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div *ngIf="!isDesktop" class="song-detail-box-mobile">
+            <div class="detail-box-mobile">
+                <img style="width: 100px; height: 100px" src="{{ songImg }}" alt="{{ songName }}" />
+                <p>เพลง : {{ songName }}</p>
+                <p>ศิลปิน : {{ songArtist }}</p>
+            </div>
+
+            <div class="youtube-box-mobile">
+                <!-- <iframe [src]="safeURL" frameborder="0" allowfullscreen></iframe> -->
+                <iframe width="300" height="150" [src]="songUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- <p #para>Start editing to see some magic happen :)</p> -->
+
+        <div class="song-text-box">
+            <div class="tool-box">
+                <button (click)="changeFont('+')" style="margin-right: 5px">
+            เพิ่มคีย์
+          </button>
+                <button (click)="changeFont('+')" style="margin-right: 20px">
+            ลดคีย์
+          </button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">A</button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">
+            Bb
+          </button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">B</button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">C</button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">
+            C#
+          </button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">D</button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">
+            Eb
+          </button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">E</button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">F</button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">
+            F#
+          </button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">G</button>
+                <button (click)="changeFont('+')" style="margin-right: 20px">
+            G#
+          </button>
+                <button (click)="changeFont('+')" style="margin-right: 5px">
+            เพิ่มขนาดตัวอักษร
+          </button>
+                <button (click)="changeFont('-')">ลดขนาดตัวอักษร</button>
+            </div>
+
+            <div class="text-box">
+                <div class="song disable-text-selection">
+                    <!-- <div class="transposition"></div> -->
+                    <div>
+                        <p #para *ngFor="let text of songContent">
+                            {{ text }}
+                            <!-- {{ textsong }} -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

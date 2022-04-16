@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <Nav>
+        <div class="nevbar">
+            <h1>คอร์ดจากผู้ใช้งาน</h1>
+        </div>
+    </Nav>
+
+    <!-- For Desktop -->
+    <div *ngIf="isDesktop">
+        <main>
+            <section class="section-menu">
+                <h1>เพลงยอดนิยมประจำสัปดาห์</h1>
+                <div class="list-menu">
+                    <li *ngFor="let popsong of poppularSong" [value]="popsong">
+                        <mat-icon style="color: black">library_music</mat-icon>
+                        <a href="#">{{ popsong }}</a>
+                    </li>
+                </div>
+                <h1>เพลงฮิตตลอดกาล</h1>
+                <div class="list-menu">
+                    <li *ngFor="let lesong of legendSong" [value]="lesong">
+                        <mat-icon style="color: black">library_music</mat-icon>
+                        <a href="#">{{ lesong }}</a>
+                    </li>
+                </div>
+            </section>
+
+            <section class="section-main">
+                <div class="main-grid">
+                    <div *ngFor="let num of song_id; let i = index">
+                        <div class="main-card">
+                            <div class="tag">คอร์ดเพลง</div>
+                            <div class="img-card">
+                                <img [routerLink]="['/songuser', song_id[i]]" src="{{ song_img[i] }}" alt="" />
+                            </div>
+                            <div class="content-card">
+                                <h3>
+                                    <a [routerLink]="['/songuser', song_id[i]]">
+                      {{ song_name[i] }}
+                    </a>
+                                </h3>
+                                <h1>
+                                    <a [routerLink]="['/songuser', song_id[i]]">
+                      {{ song_artist[i] }}
+                    </a>
+                                </h1>
+                            </div>
+                            <div class="footer-card"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="footer-main">
+                    <div class="pagination">
+                        <a routerLink="/home">&laquo;</a>
+                        <div *ngFor="
+                  let dummy of ' '.repeat(numPage).split('');
+                  let i = index
+                ">
+                            <button style="width: 40px; height: 40px" (click)="onPageClick(i + 1)">
+                  {{ i + 1 }}
+                </button>
+                        </div>
+                        <a routerLink="/home">&raquo;</a>
+                    </div>
+                </footer>
+
+                <a class="abot" routerLink="/addsong">
+            หาคอร์ดที่จะเล่นไม่เจอหรอ ลองเพิ่มคอร์ดสิ</a
+          >
+        </section>
+      </main>
+    </div>
+
+    <!-- For Mobile -->
+    <div *ngIf="!isDesktop">
+      <section class="section-mobile">
+        <div class="main-grid-mobile">
+          <div *ngFor="let num of song_id; let i = index">
+            <div class="main-card-mobile">
+              <div class="tag-mobile">คอร์ดเพลง</div>
+              <div class="img-card-mobile">
+                <img
+                  [routerLink]="['/songuser', song_id[i]]"
+                  src="{{ song_img[i] }}"
+                  alt=""
+                />
+              </div>
+              <div class="content-card-mobile">
+                <h3>
+                  <a [routerLink]="['/songuser', song_id[i]]">
+                    {{ song_name[i] }}
+                  </a>
+                </h3>
+                <h1>
+                    <a [routerLink]="['/songuser', song_id[i]]">
+                    {{ song_artist[i] }}
+                  </a>
+                </h1>
+    </div>
+    </div>
+    </div>
+    </div>
+    <footer class="footer-main">
+        <div class="pagination">
+            <a routerLink="/home">&laquo;</a>
+            <div *ngFor="let dummy of ' '.repeat(numPage).split(''); let i = index">
+                <button style="width: 40px; height: 40px" (click)="onPageClick(i + 1)">
+                {{ i + 1 }}
+              </button>
+            </div>
+            <a routerLink="/home">&raquo;</a>
+        </div>
+    </footer>
+
+    <a class="abot" routerLink="/addsong">
+          หาคอร์ดที่จะเล่นไม่เจอหรอ ลองเพิ่มคอร์ดสิ</a
+        >
+      </section>
+    </div>
+  </body>
+</html>

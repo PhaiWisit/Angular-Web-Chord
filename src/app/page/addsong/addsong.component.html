@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <Nav>
+        <div class="nevbar">
+            <h1>เพิ่มเพลง</h1>
+        </div>
+    </Nav>
+
+    <div>
+        <main>
+            <section class="section-main">
+                <div class="notflex">
+                    <label for="mane">ชื่อเพลง</label>
+                    <input [(ngModel)]="song_name" class="input-name" type="text" placeholder="ใส่ชื่อเพลง" />
+                </div>
+                <div class="notflex">
+                    <label for="mane">ชื่อศิลปิน</label>
+                    <input [(ngModel)]="song_artist" class="input-name" type="text" placeholder="ใส่ชื่อศิลปิน" />
+                </div>
+                <div class="notflex">
+                    <!-- <label for="mane">อัปโหลดรูป</label>
+                    <input class="input-name" type="file" (change)="onChange($event)" />
+
+                    <button (click)="onUpload()" class="btn btn-success">Upload</button> -->
+                </div>
+                <div class="notflex">
+                    <label for="mane">ลิงก์Youtube</label>
+                    <input [(ngModel)]="song_url" class="input-name" type="text" placeholder="ใส่ลิงก์Youtube" />
+                </div>
+                <div class="notflex">
+                    <label for="mane">ใส่เนื้อหาเพลง</label>
+                    <textarea (ngModelChange)="modelChangeFn($event)" [(ngModel)]="song_text" class="input-text" id="song_text" rows="3">
+     [ตัวอย่าง]
+Intro:| [_Asus2] [_A] | [_Bm7] [_E] || [_Asus2] [_A] | [_Bm7] [_E] |;
+จา[Asus2]ก.. วันนี้[A]..;
+[F#m] เธอจะไม่เห็น[E]หน้าคนอย่างฉัน[D#dim]อีก;
+โปร[Bm7]ดจำเอาไว้[E];</textarea
+            >
+          </div>
+          <div class="notflex">
+            <button (click)="onShow()">แสดงตัวอย่าง</button>
+          </div>
+
+          <div *ngIf="!isChange">
+            <div class="notflex">
+              <div class="text-box">
+                <div class="song disable-text-selection">
+                  <p *ngFor="let text of songContent">
+                    {{ text }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="notflex">
+            <button (click)="onSubmit()">สร้างคอร์ด</button>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

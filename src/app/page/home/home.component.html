@@ -1,0 +1,180 @@
+<!-- <div class="full">
+    <mat-drawer-container class="mat-container">
+        <mat-drawer class="mat-drawer" *ngIf="isDesktop" mode="side" opened>
+            <div class="text-head">เพลงยอดนิยมประจำสัปดาห์</div>
+
+            <mat-selection-list #shoes [multiple]="false">
+                <mat-list-option class="list-item text-list-song" *ngFor="let popsong of poppularSong" [value]="popsong">
+                    <div class="text-list-song">
+                        <mat-icon>stars</mat-icon>
+                        {{ popsong }}
+                    </div>
+                </mat-list-option>
+            </mat-selection-list>
+
+            <div class="text-head">เพลงฮิตตลอดกาล</div>
+
+            <mat-selection-list #shoes [multiple]="false">
+                <mat-list-option class="list-item text-list-song" *ngFor="let legendsong of legendSong" [value]="legendsong">
+                    <div class="text-list-song">
+                        <mat-icon>library_music</mat-icon>
+                        {{ legendsong }}
+                    </div>
+                </mat-list-option>
+            </mat-selection-list>
+        </mat-drawer>
+
+        <mat-drawer-content class="content">
+            <div fxLayout="row wrap">
+                <div fxFlex="25%" *ngFor="let num of [1, 2, 3, 4, 5, 6, 7]">
+                    <mat-card class="mat-card mat-elevation-z4">
+                        <mat-card-header>
+                            <mat-card-title>Mountains {{ num }}</mat-card-title>
+                        </mat-card-header>
+                        <img style="height: 50%; width: 100%" mat-card-image src="https://i.pinimg.com/564x/78/a6/01/78a6014cefe61b5b4cc6a8cbaa834d09.jpg" />
+                        <mat-card-content>
+                            <p>The Himalayas is a mountain range in Asia.</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button>LIKE</button>
+                            <button mat-button>SHARE</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <Nav>
+        <div class="nevbar">
+            <h1>{{ _menuName }}</h1>
+        </div>
+    </Nav>
+
+    <!-- For Desktop -->
+    <div *ngIf="isDesktop">
+        <main>
+            <section class="section-menu">
+                <h1>เพลงยอดนิยมประจำสัปดาห์</h1>
+                <div class="list-menu">
+                    <li *ngFor="let popsong of poppularSong" [value]="popsong">
+                        <mat-icon style="color: black">library_music</mat-icon>
+                        <a href="#">{{ popsong }}</a>
+                    </li>
+                </div>
+                <h1>เพลงฮิตตลอดกาล</h1>
+                <div class="list-menu">
+                    <li *ngFor="let lesong of legendSong" [value]="lesong">
+                        <mat-icon style="color: black">library_music</mat-icon>
+                        <a href="#">{{ lesong }}</a>
+                    </li>
+                </div>
+            </section>
+
+            <section class="section-main">
+                <div class="main-grid">
+                    <div *ngFor="let num of song_id; let i = index">
+                        <div class="main-card">
+                            <div class="tag">คอร์ดเพลง</div>
+                            <div class="img-card">
+                                <img class="disable-text-selection" [routerLink]="['/song', song_id[i]]" src="{{ song_img[i] }}" alt="" />
+                            </div>
+                            <div class="content-card">
+                                <h3>
+                                    <a [routerLink]="['/song', song_id[i]]">
+                      {{ song_name[i] }}
+                    </a>
+                                </h3>
+                                <h1>
+                                    <a [routerLink]="['/song', song_id[i]]">
+                      {{ song_artist[i] }}
+                    </a>
+                                </h1>
+                            </div>
+                            <div class="footer-card"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="footer-main">
+                    <div class="pagination">
+                        <a routerLink="/home">&laquo;</a>
+                        <div *ngFor="
+                  let dummy of ' '.repeat(numPage).split('');
+                  let i = index
+                ">
+                            <button style="width: 40px; height: 40px" (click)="onPageClick(i + 1)">
+                  {{ i + 1 }}
+                </button>
+                        </div>
+                        <a routerLink="/home">&raquo;</a>
+                    </div>
+                </footer>
+
+                <a class="abot" routerLink="/addsong">
+            หาคอร์ดที่จะเล่นไม่เจอหรอ ลองเพิ่มคอร์ดสิ</a
+          >
+        </section>
+      </main>
+    </div>
+
+    <!-- For Mobile -->
+    <div *ngIf="!isDesktop">
+      <section class="section-mobile">
+        <div class="main-grid-mobile">
+          <div *ngFor="let num of song_id; let i = index">
+            <div class="main-card-mobile">
+              <div class="tag-mobile">คอร์ดเพลง</div>
+              <div class="img-card-mobile">
+                <img
+                  [routerLink]="['/song', song_id[i]]"
+                  src="{{ song_img[i] }}"
+                  alt=""
+                />
+              </div>
+              <div class="content-card-mobile">
+                <h3>
+                  <a [routerLink]="['/song', song_id[i]]">
+                    {{ song_name[i] }}
+                  </a>
+                </h3>
+                <h1>
+                    <a [routerLink]="['/song', song_id[i]]">
+                    {{ song_artist[i] }}
+                  </a>
+                </h1>
+    </div>
+    </div>
+    </div>
+    </div>
+    <footer class="footer-main">
+        <div class="pagination">
+            <a routerLink="/home">&laquo;</a>
+            <div *ngFor="let dummy of ' '.repeat(numPage).split(''); let i = index">
+                <button style="width: 40px; height: 40px" (click)="onPageClick(i + 1)">
+                {{ i + 1 }}
+              </button>
+            </div>
+            <a routerLink="/home">&raquo;</a>
+        </div>
+    </footer>
+
+    <a class="abot" routerLink="/addsong">
+          หาคอร์ดที่จะเล่นไม่เจอหรอ ลองเพิ่มคอร์ดสิ</a
+        >
+      </section>
+    </div>
+  </body>
+</html>

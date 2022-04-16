@@ -1,17 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-
-/* div.song>p {
+div.song>p {
     line-height: 2.5;
     margin: 15px 0px 15px 0px;
 }
@@ -25,7 +12,6 @@ span.chord {
 
 span.chord-inline {
     font-weight: bold;
-    color: violet;
 }
 
 div.transposition a.transposition {
@@ -34,4 +20,4 @@ div.transposition a.transposition {
 
 div.song div.transposition {
     margin-bottom: 20px;
-} */
+}
